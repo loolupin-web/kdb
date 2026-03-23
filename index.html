@@ -95,21 +95,21 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .sb-logo-name{font-size:14px;font-weight:700;color:var(--text)}
 .sb-logo-sub{font-size:10px;color:var(--text3);margin-top:1px}
 
-.sb-nav{flex:1;padding:12px 10px;overflow-y:auto}
-.sb-section{margin-bottom:8px}
-.sb-section-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:8px 8px 4px;font-family:'Noto Sans KR',sans-serif}
-.sb-parent{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:7px;cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%;text-align:left;color:var(--text2);font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif}
+.sb-nav{flex:1;padding:8px 8px;overflow-y:auto}
+.sb-section{margin-bottom:4px}
+.sb-section-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:6px 8px 3px;font-family:'Noto Sans KR',sans-serif}
+.sb-parent{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%;text-align:left;color:var(--text2);font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif}
 .sb-parent:hover{background:var(--bg2);color:var(--text)}
 .sb-parent.open{color:var(--text);background:var(--bg2)}
-.sb-parent .pi{font-size:15px;flex-shrink:0}
+.sb-parent .pi{font-size:14px;flex-shrink:0}
 .sb-parent .arrow{margin-left:auto;font-size:10px;transition:transform .2s;color:var(--text3)}
 .sb-parent.open .arrow{transform:rotate(90deg)}
 .sb-children{overflow:hidden;max-height:0;transition:max-height .25s ease}
 .sb-children.open{max-height:200px}
-.sb-child{display:flex;align-items:center;gap:8px;padding:8px 10px 8px 32px;border-radius:6px;cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%;text-align:left;color:var(--text3);font-size:13px;font-family:'Noto Sans KR',sans-serif}
+.sb-child{display:flex;align-items:center;gap:7px;padding:6px 8px 6px 28px;border-radius:6px;cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%;text-align:left;color:var(--text3);font-size:12px;font-family:'Noto Sans KR',sans-serif}
 .sb-child:hover{background:var(--bg2);color:var(--text2)}
-.sb-child.active{background:rgba(0,119,204,.1);color:var(--accent);font-weight:700;border-left:3px solid var(--accent);padding-left:29px}
-.sb-child .ci{font-size:13px}
+.sb-child.active{background:rgba(0,119,204,.1);color:var(--accent);font-weight:700;border-left:3px solid var(--accent);padding-left:25px}
+.sb-child .ci{font-size:12px}
 
 .sb-bottom{padding:14px 10px;border-top:1px solid var(--border)}
 .sb-user{display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:7px;background:var(--bg2);border:1px solid var(--border);margin-bottom:8px}
@@ -202,22 +202,43 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 
 /* 테이블 — 모든 컬럼 표시 */
 .tbl-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-table{width:100%;border-collapse:collapse;table-layout:auto}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
 thead tr{border-bottom:2px solid var(--border2);background:var(--bg2)}
-th{padding:11px 13px;font-size:12px;font-weight:700;color:var(--text2);text-align:left;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
-td{padding:12px 13px;font-size:13px;color:var(--text2);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+th{padding:9px 8px;font-size:11px;font-weight:700;color:var(--text2);text-align:center;font-family:'Noto Sans KR',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+td{padding:9px 8px;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 tr.main-row:hover td{background:rgba(0,119,204,.03)}
 tr.main-row.row-open td{background:rgba(0,119,204,.06);border-bottom:none}
 
-td.td-no{color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:12px;white-space:nowrap;vertical-align:middle}
-td.td-dt{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);white-space:nowrap;vertical-align:middle}
-td.td-line{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;white-space:nowrap;vertical-align:middle}
-td.td-eq{color:var(--text);font-weight:700;font-size:13px;white-space:nowrap;vertical-align:middle}
-td.td-txt{color:var(--text);font-size:13px;max-width:180px;word-break:keep-all;white-space:normal;line-height:1.5}
-td.td-sn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);white-space:nowrap;vertical-align:middle}
-td.td-err{font-size:12px;color:var(--text2);max-width:130px;word-break:keep-all;white-space:normal}
-td.td-time{text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;white-space:nowrap;vertical-align:middle}
-td.td-parts{font-size:12px;color:var(--text2);white-space:nowrap;vertical-align:middle}
+/* 컬럼별 너비 */
+col.col-no    {width:36px}
+col.col-dt    {width:88px}
+col.col-line  {width:48px}
+col.col-eq    {width:90px}
+col.col-sn    {width:70px}
+col.col-cat   {width:68px}
+col.col-code  {width:48px}
+col.col-imp   {width:56px}
+col.col-sym   {width:160px}
+col.col-err   {width:80px}
+col.col-cause {width:160px}
+col.col-action{width:160px}
+col.col-st    {width:56px}
+col.col-repair{width:44px}
+col.col-parts {width:80px}
+col.col-time  {width:52px}
+col.col-worker{width:56px}
+col.col-photo {width:52px}
+col.col-btn   {width:80px}
+
+td.td-no{color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:11px;text-align:center}
+td.td-dt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
+td.td-line{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;text-align:center}
+td.td-eq{color:var(--text);font-weight:700;font-size:12px}
+td.td-txt{color:var(--text);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+td.td-sn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3)}
+td.td-err{font-size:11px;color:var(--text2)}
+td.td-time{text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px}
+td.td-parts{font-size:11px;color:var(--text2)}
 
 .btn-edit{background:#fff;border:1px solid var(--border2);border-radius:5px;padding:4px 10px;color:var(--accent2);cursor:pointer;font-size:12px;transition:all .2s;margin-right:4px;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
 .btn-edit:hover{background:rgba(0,119,204,.08);border-color:var(--accent)}
@@ -593,6 +614,12 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
         </div>
         <div class="tbl-wrap">
           <table>
+            <colgroup>
+              <col class="col-no"><col class="col-dt"><col class="col-line"><col class="col-eq"><col class="col-sn">
+              <col class="col-cat"><col class="col-code"><col class="col-imp"><col class="col-sym"><col class="col-err">
+              <col class="col-cause"><col class="col-action"><col class="col-st">
+              <col class="col-repair"><col class="col-parts"><col class="col-time"><col class="col-worker"><col class="col-photo"><col class="col-btn">
+            </colgroup>
             <thead><tr>
               <th>No.</th><th>날짜</th><th>라인</th><th>장비명</th><th>S/N</th>
               <th>분류</th><th>Code</th><th>중요도</th><th>발생 증상</th><th>Error</th>
@@ -1523,9 +1550,11 @@ function renderTable(){
             </div>`
           : '<span style="color:var(--border2);font-size:11px">—</span>'}
       </td>
-      <td style="white-space:nowrap;vertical-align:middle" onclick="event.stopPropagation()">
-        <button class="btn-edit" onclick="openEdit(${r.id})">수정</button>
-        <button class="btn-del" onclick="deleteRecord(${r.id})">삭제</button>
+      <td style="white-space:nowrap;vertical-align:middle;text-align:center" onclick="event.stopPropagation()">
+        ${(currentUser?.role==='admin' || currentUser?.name===r.worker)
+          ? `<button class="btn-edit" onclick="openEdit(${r.id})">수정</button>
+             <button class="btn-del" onclick="deleteRecord(${r.id})">삭제</button>`
+          : ''}
       </td>
     </tr>
     <tr id="${did}" class="detail-row" style="display:none">
