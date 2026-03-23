@@ -421,7 +421,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
         </button>
         <div class="sb-children open" id="children-ts">
           <button class="sb-child active" id="menu-stat" onclick="showPage('stat')">
-            <span class="ci">📊</span><span class="label">장비문제 통계데이터</span>
+            <span class="ci">📊</span><span class="label">통계데이터</span>
           </button>
           <button class="sb-child" id="menu-hist" onclick="showPage('hist')">
             <span class="ci">🗂</span><span class="label">Trouble Sheet</span>
@@ -459,7 +459,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   <!-- CONTENT -->
   <div class="content">
     <div class="topbar">
-      <span class="topbar-path" id="topbarPath">Trouble Sheet &rsaquo; <span class="cur">장비문제 통계데이터</span></span>
+      <span class="topbar-path" id="topbarPath">Trouble Sheet &rsaquo; <span class="cur">통계데이터</span></span>
     </div>
     <div class="main">
 
@@ -923,7 +923,7 @@ function showPage(name){
     const m=document.getElementById('menu-'+p);
     if(m) m.classList.toggle('active',p===name);
   });
-  const labels={'stat':'장비문제 통계데이터','hist':'Trouble Sheet','admin':'계정 관리'};
+  const labels={'stat':'통계데이터','hist':'Trouble Sheet','admin':'계정 관리'};
   const sections={'stat':'장비 Issue 관리','hist':'장비 Issue 관리','admin':'관리자'};
   document.getElementById('topbarPath').innerHTML=`${sections[name]||'Trouble Sheet'} &rsaquo; <span class="cur">${labels[name]||name}</span>`;
   if(name==='stat'){
