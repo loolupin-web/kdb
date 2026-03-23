@@ -1372,29 +1372,67 @@ function toggleSettingPanel(){
 }
 
 /* ══ 사진 첨부 ══ */
-let pendingPhotoUrls = []; // 수정 시 기존 사진 URL 유지용
+let pendingPhotoUrls = [];
+const MAX_PHOTOS = 3;
+
+// 이미지 압축 함수 (Canvas 사용)
+function compressImage(file, maxWidth=1200, quality=0.75){
+  return new Promise(resolve=>{
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = ()=>{
+      URL.revokeObjectURL(url);
+      const scale = Math.min(1, maxWidth / img.width);
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      canvas.toBlob(blob => resolve(blob), 'image/jpeg', quality);
+    };
+    img.src = url;
+  });
+}
+
+// 드래그앤드롭 핸들러
+function onPhotoDrop(e){
+  e.preventDefault();
+  const dz = document.getElementById('photo-dropzone');
+  if(dz){ dz.style.borderColor='var(--border2)'; dz.style.background='var(--bg)'; }
+  const files = Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));
+  if(files.length) addPhotoFiles(files);
+}
 
 function previewPhotos(input){
+  addPhotoFiles(Array.from(input.files));
+  input.value = ''; // 같은 파일 재선택 허용
+}
+
+function addPhotoFiles(files){
   const preview = document.getElementById('photo-preview');
-  // 기존 new-preview 요소만 제거
-  preview.querySelectorAll('.new-preview').forEach(el=>el.remove());
-  const files = input.files;
   const currentCount = preview.querySelectorAll('div').length;
-  const remaining = 5 - currentCount;
-  for(let i=0; i<Math.min(files.length, remaining); i++){
-    const file = files[i];
+  const remaining = MAX_PHOTOS - currentCount;
+  if(remaining <= 0){ showToast(`⚠️ 사진은 최대 ${MAX_PHOTOS}장까지 첨부 가능합니다`,'#e05a1a'); return; }
+  const toAdd = files.slice(0, remaining);
+  if(files.length > remaining) showToast(`⚠️ ${remaining}장만 추가됩니다 (최대 ${MAX_PHOTOS}장)`,'#e05a1a');
+
+  toAdd.forEach(file=>{
     const reader = new FileReader();
-    reader.onload = e => {
+    reader.onload = e=>{
       const div = document.createElement('div');
       div.className = 'new-preview';
+      div.dataset.file = file.name;
       div.style.cssText = 'position:relative;width:80px;height:80px';
       div.innerHTML = `
-        <img src="${e.target.result}" style="width:80px;height:80px;object-fit:cover;border-radius:6px;border:2px solid var(--accent);cursor:pointer" />
-        <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,119,204,.7);color:#fff;font-size:9px;text-align:center;border-radius:0 0 6px 6px;padding:2px">NEW</div>`;
+        <img src="${e.target.result}" style="width:80px;height:80px;object-fit:cover;border-radius:6px;border:2px solid var(--accent)" />
+        <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,119,204,.75);color:#fff;font-size:9px;text-align:center;border-radius:0 0 5px 5px;padding:2px">NEW</div>
+        <button onclick="this.parentElement.remove()" style="position:absolute;top:-6px;right:-6px;background:#ff4d4d;border:none;border-radius:50%;width:18px;height:18px;color:#fff;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>`;
+      // file 객체 저장
+      div._file = file;
       preview.appendChild(div);
     };
     reader.readAsDataURL(file);
-  }
+  });
 }
 
 function removeExistingPhoto(idx, url){
@@ -1609,14 +1647,20 @@ function buildForm(tid,data){
       </div>
     </div>
     <div class="fsec">
-      <div class="ftitle">사진 첨부 <span class="opt">선택 · 최대 5장</span></div>
+      <div class="ftitle">사진 첨부 <span class="opt">선택 · 최대 3장</span></div>
       <div style="display:flex;flex-direction:column;gap:10px">
-        <label style="display:inline-flex;align-items:center;gap:8px;background:var(--bg);border:1.5px dashed var(--border2);border-radius:8px;padding:10px 16px;cursor:pointer;font-size:13px;color:var(--text2);transition:all .2s;width:fit-content"
-          onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
-          onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'">
-          <span style="font-size:18px">📷</span> 사진 선택
+        <!-- 드래그앤드롭 영역 -->
+        <div id="photo-dropzone"
+          ondragover="event.preventDefault();this.style.borderColor='var(--accent)';this.style.background='rgba(0,119,204,.05)'"
+          ondragleave="this.style.borderColor='var(--border2)';this.style.background='var(--bg)'"
+          ondrop="onPhotoDrop(event)"
+          onclick="document.getElementById('f-photos').click()"
+          style="border:2px dashed var(--border2);border-radius:10px;padding:20px;text-align:center;cursor:pointer;background:var(--bg);transition:all .2s">
+          <div style="font-size:28px;margin-bottom:6px">📷</div>
+          <div style="font-size:13px;color:var(--text2);font-weight:600">클릭하거나 사진을 여기로 드래그</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">최대 3장 · 자동 압축 적용</div>
           <input type="file" id="f-photos" accept="image/*" multiple style="display:none" onchange="previewPhotos(this)" />
-        </label>
+        </div>
         <div id="photo-preview" style="display:flex;flex-wrap:wrap;gap:8px">
           ${(data.photoUrls||[]).map((url,i)=>`
             <div style="position:relative;width:80px;height:80px" id="photo-existing-${i}">
@@ -1653,10 +1697,12 @@ function submitForm(){
   // 기존 사진 URL 유지
   data.photoUrls = [...(pendingPhotoUrls||[])];
 
-  // 새 사진 파일 업로드 후 저장
-  const files = document.getElementById('f-photos')?.files;
-  if(files && files.length > 0){
-    uploadPhotosAndSave(data, files);
+  // new-preview div에서 file 객체 수집
+  const newDivs = document.querySelectorAll('#photo-preview .new-preview');
+  const newFiles = Array.from(newDivs).map(d=>d._file).filter(Boolean);
+
+  if(newFiles.length > 0){
+    uploadPhotosAndSave(data, newFiles);
   } else {
     saveRecord(data);
   }
@@ -1668,15 +1714,18 @@ async function uploadPhotosAndSave(data, files){
   document.getElementById('btnSubmit').disabled = true;
   try {
     const uploadedUrls = [];
-    for(let i=0; i<Math.min(files.length,5); i++){
+    for(let i=0; i<files.length; i++){
       const file = files[i];
-      const path = `photos/${Date.now()}_${file.name}`;
+      // 압축 적용
+      const compressed = await compressImage(file);
+      const path = `photos/${Date.now()}_${i}.jpg`;
       const storageRef = FB.ref(FB.storage, path);
       await new Promise((resolve, reject) => {
-        const task = FB.uploadBytesResumable(storageRef, file);
+        const task = FB.uploadBytesResumable(storageRef, compressed);
         task.on('state_changed', null, reject, async () => {
           const url = await FB.getDownloadURL(task.snapshot.ref);
           uploadedUrls.push(url);
+          if(prog) prog.textContent = `업로드 중... (${uploadedUrls.length}/${files.length})`;
           resolve();
         });
       });
