@@ -95,20 +95,20 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .sb-logo-name{font-size:14px;font-weight:700;color:var(--text)}
 .sb-logo-sub{font-size:10px;color:var(--text3);margin-top:1px}
 
-.sb-nav{flex:1;padding:8px 8px;overflow-y:auto}
-.sb-section{margin-bottom:4px}
-.sb-section-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:6px 8px 3px;font-family:'Noto Sans KR',sans-serif}
-.sb-parent{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%;text-align:left;color:var(--text2);font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif}
-.sb-parent:hover{background:var(--bg2);color:var(--text)}
-.sb-parent.open{color:var(--text);background:var(--bg2)}
+.sb-nav{flex:1;padding:6px 8px;overflow-y:auto}
+.sb-section{margin-bottom:2px}
+.sb-section-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:5px 8px 2px;font-family:'Noto Sans KR',sans-serif}
+.sb-parent{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:6px;cursor:pointer;transition:color .15s;border:none;background:transparent;width:100%;text-align:left;color:var(--text2);font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif}
+.sb-parent:hover{color:var(--text)}
+.sb-parent.open{color:var(--text)}
 .sb-parent .pi{font-size:14px;flex-shrink:0}
 .sb-parent .arrow{margin-left:auto;font-size:10px;transition:transform .2s;color:var(--text3)}
 .sb-parent.open .arrow{transform:rotate(90deg)}
 .sb-children{overflow:hidden;max-height:0;transition:max-height .25s ease}
 .sb-children.open{max-height:200px}
-.sb-child{display:flex;align-items:center;gap:7px;padding:6px 8px 6px 28px;border-radius:6px;cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%;text-align:left;color:var(--text3);font-size:12px;font-family:'Noto Sans KR',sans-serif}
-.sb-child:hover{background:var(--bg2);color:var(--text2)}
-.sb-child.active{background:rgba(0,119,204,.1);color:var(--accent);font-weight:700;border-left:3px solid var(--accent);padding-left:25px}
+.sb-child{display:flex;align-items:center;gap:7px;padding:5px 8px 5px 26px;border-radius:4px;cursor:pointer;transition:color .15s;border:none;background:transparent;width:100%;text-align:left;color:var(--text3);font-size:12px;font-family:'Noto Sans KR',sans-serif;font-weight:400}
+.sb-child:hover{color:var(--text)}
+.sb-child.active{color:var(--text)}
 .sb-child .ci{font-size:12px}
 
 .sb-bottom{padding:14px 10px;border-top:1px solid var(--border)}
@@ -208,27 +208,29 @@ th{padding:9px 8px;font-size:11px;font-weight:700;color:var(--text2);text-align:
 td{padding:9px 8px;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 tr.main-row:hover td{background:rgba(0,119,204,.03)}
 tr.main-row.row-open td{background:rgba(0,119,204,.06);border-bottom:none}
+tr.main-row.row-selected td{background:rgba(0,119,204,.08)!important}
+tr.main-row.row-selected+tr.detail-row>td{background:rgba(0,119,204,.04)!important}
 
 /* 컬럼별 너비 */
-col.col-no    {width:36px}
-col.col-dt    {width:88px}
-col.col-line  {width:48px}
-col.col-eq    {width:90px}
-col.col-sn    {width:70px}
-col.col-cat   {width:68px}
-col.col-code  {width:48px}
-col.col-imp   {width:56px}
-col.col-sym   {width:160px}
-col.col-err   {width:80px}
-col.col-cause {width:160px}
-col.col-action{width:160px}
-col.col-st    {width:56px}
-col.col-repair{width:44px}
-col.col-parts {width:80px}
-col.col-time  {width:52px}
-col.col-worker{width:56px}
-col.col-photo {width:52px}
-col.col-btn   {width:80px}
+col.col-no    {width:42px}
+col.col-dt    {width:52px}
+col.col-line  {width:58px}
+col.col-eq    {width:110px}
+col.col-sn    {width:80px}
+col.col-cat   {width:84px}
+col.col-code  {width:58px}
+col.col-imp   {width:70px}
+col.col-sym   {width:170px}
+col.col-err   {width:90px}
+col.col-cause {width:170px}
+col.col-action{width:170px}
+col.col-st    {width:68px}
+col.col-repair{width:56px}
+col.col-parts {width:92px}
+col.col-time  {width:62px}
+col.col-worker{width:72px}
+col.col-photo {width:62px}
+col.col-btn   {width:96px}
 
 td.td-no{color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:11px;text-align:center}
 td.td-dt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
@@ -261,10 +263,10 @@ tr.detail-row>td{background:var(--bg2)!important;border-bottom:2px solid var(--b
 /* ══ FORM (슬라이드 패널) ══ */
 .form-panel{position:fixed;top:0;right:0;bottom:0;width:700px;background:var(--panel);border-left:1px solid var(--border2);z-index:500;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.22,1,.36,1);box-shadow:-8px 0 40px rgba(0,0,0,.12)}
 .form-panel.open{transform:translateX(0)}
-.form-panel-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2)}
-.form-panel-title{font-size:16px;font-weight:800;color:var(--text)}
-.form-panel-body{flex:1;overflow-y:auto;padding:20px 22px;background:var(--bg)}
-.form-panel-foot{padding:14px 22px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0;background:var(--panel)}
+.form-panel-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2)}
+.form-panel-title{font-size:15px;font-weight:800;color:var(--text)}
+.form-panel-body{flex:1;overflow-y:auto;padding:14px 18px;background:var(--bg)}
+.form-panel-foot{padding:10px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0;background:var(--panel)}
 .form-overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:499;display:none;backdrop-filter:blur(2px)}
 .form-overlay.open{display:block}
 .btn-close{background:transparent;border:1px solid var(--border2);border-radius:5px;padding:6px 12px;color:var(--text3);cursor:pointer;font-size:12px;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
@@ -275,23 +277,23 @@ tr.detail-row>td{background:var(--bg2)!important;border-bottom:2px solid var(--b
 .btn-save:hover{opacity:.88}
 
 /* FORM 내부 */
-.fsec{margin-bottom:16px;background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:16px 18px}
-.ftitle{font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.5px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.fsec{margin-bottom:10px;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:10px 14px}
+.ftitle{font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.5px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .fg4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
 .fspan2{grid-column:span 2}
 .fspan3{grid-column:span 3}
 .fspan4{grid-column:span 4}
-.ff{display:flex;flex-direction:column;gap:5px}
-.ff label{font-size:12px;font-weight:600;color:var(--text2);font-family:'Noto Sans KR',sans-serif}
-.ff label .opt{color:var(--text3);font-weight:400;font-size:11px;margin-left:3px}
-.ff input,.ff select,.ff textarea{background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:9px 12px;color:var(--text);font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;transition:border-color .2s;resize:vertical}
+.ff{display:flex;flex-direction:column;gap:4px}
+.ff label{font-size:11px;font-weight:600;color:var(--text2);font-family:'Noto Sans KR',sans-serif}
+.ff label .opt{color:var(--text3);font-weight:400;font-size:10px;margin-left:3px}
+.ff input,.ff select,.ff textarea{background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:7px 10px;color:var(--text);font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;transition:border-color .2s;resize:vertical}
 .ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,119,204,.1)}
 .ff select option{background:var(--panel)}
-.cat-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.cat-btn{padding:9px 4px;border-radius:6px;border:2px solid var(--border2);background:var(--bg);color:var(--text3);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif;text-align:center;line-height:1.4}
-.cat-btn .ci{font-size:16px;display:block;margin-bottom:3px}
+.cat-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cat-btn{padding:7px 4px;border-radius:6px;border:2px solid var(--border2);background:var(--bg);color:var(--text3);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif;text-align:center;line-height:1.4}
+.cat-btn .ci{font-size:14px;display:block;margin-bottom:2px}
 .cat-btn:hover{border-color:var(--accent);color:var(--text)}
 .cat-btn.sel-설비결함{border-color:#cc1f3a;background:#fde8eb;color:#cc1f3a}
 .cat-btn.sel-기계{border-color:#b84800;background:#fdeee4;color:#b84800}
@@ -369,8 +371,8 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
     <!-- 탭 -->
     <div class="auth-tabs">
-      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">로그인</button>
-      <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">회원가입</button>
+      <button class="auth-tab active" id="tab-login">로그인</button>
+      <button class="auth-tab" id="tab-signup">회원가입</button>
     </div>
 
     <!-- 로그인 폼 -->
@@ -383,9 +385,9 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
     <!-- 회원가입 폼 -->
     <div id="form-signup" style="display:none">
-      <div class="fg"><label>아이디</label><input type="text" id="suId" placeholder="사용할 아이디" /></div>
       <div class="fg"><label>이름</label><input type="text" id="suName" placeholder="실명 입력" /></div>
-      <div class="fg"><label>비밀번호 <span style="font-size:11px;color:var(--text3);font-weight:400">(6자 이상)</span></label><input type="password" id="suPw" placeholder="비밀번호 6자 이상" /></div>
+      <div class="fg"><label>아이디</label><input type="text" id="suId" placeholder="사용할 아이디" /></div>
+      <div class="fg"><label>비밀번호</label><input type="password" id="suPw" placeholder="비밀번호 입력" /></div>
       <div style="background:#fff8e0;border:1px solid #ffe066;border-radius:7px;padding:10px 13px;font-size:12px;color:#7a6000;margin-bottom:14px">
         ⚠️ 가입 후 관리자 승인이 필요합니다. 승인 전까지 로그인이 제한될 수 있습니다.
       </div>
@@ -410,21 +412,21 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
     </div>
 
     <nav class="sb-nav">
-      <!-- Trouble Sheet 섹션 -->
+      <!-- 장비 Issue 관리 섹션 -->
       <div class="sb-section">
         <button class="sb-parent open" id="parent-ts" onclick="toggleParent('ts')">
           <span class="pi">📋</span>
-          <span>Trouble Sheet</span>
+          <span>장비 Issue 관리</span>
           <span class="arrow">▶</span>
         </button>
         <div class="sb-children open" id="children-ts">
           <button class="sb-child active" id="menu-stat" onclick="showPage('stat')">
-            <span class="ci">📊</span><span class="label">통계 데이터</span>
+            <span class="ci">📊</span><span class="label">장비문제 통계데이터</span>
           </button>
           <button class="sb-child" id="menu-hist" onclick="showPage('hist')">
-            <span class="ci">🗂</span><span class="label">이력 조회</span>
+            <span class="ci">🗂</span><span class="label">Trouble Sheet</span>
           </button>
-        </div>
+          </div>
       </div>
 
       <!-- 관리자 섹션 (admin만 표시) -->
@@ -450,14 +452,14 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
           <div class="sb-urole" id="userRole"></div>
         </div>
       </div>
-      <button class="btn-logout" onclick="doLogout()"><span>로그아웃</span></button>
+      <button class="btn-logout" id="btn-logout"><span>로그아웃</span></button>
     </div>
   </aside>
 
   <!-- CONTENT -->
   <div class="content">
     <div class="topbar">
-      <span class="topbar-path" id="topbarPath">Trouble Sheet &rsaquo; <span class="cur">통계 데이터</span></span>
+      <span class="topbar-path" id="topbarPath">Trouble Sheet &rsaquo; <span class="cur">장비문제 통계데이터</span></span>
     </div>
     <div class="main">
 
@@ -504,7 +506,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
         <!-- 도넛 3개 -->
         <div class="cg3" style="margin-bottom:14px">
-          <div class="panel"><div class="ph"><div class="ptt">분류별 비율</div><div class="pb">전체</div></div><div class="cw" style="height:220px"><canvas id="cCat"></canvas></div></div>
+          <div class="panel"><div class="ph"><div class="ptt">유형별 비율</div><div class="pb">전체</div></div><div class="cw" style="height:220px"><canvas id="cCat"></canvas></div></div>
           <div class="panel"><div class="ph"><div class="ptt">Code별 비율</div><div class="pb">전체</div></div><div class="cw" style="height:220px"><canvas id="cCode"></canvas></div></div>
           <div class="panel"><div class="ph"><div class="ptt">수리 구분</div><div class="pb">자체 vs 외주</div></div><div class="cw" style="height:220px"><canvas id="cRepair"></canvas></div></div>
         </div>
@@ -566,9 +568,9 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
         <input type="hidden" id="hdate-from" />
         <input type="hidden" id="hdate-to" />
 
-        <!-- 전체 한 줄: 검색+연월선택+분류+결과+중요도 | CSV+설정+신규등록 -->
+        <!-- 전체 한 줄: 연월+분류+code+중요도+검색 | 수정/삭제+CSV+설정+신규등록 -->
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px;justify-content:space-between">
-          <!-- 왼쪽: 검색 + 연월 드롭다운 + 필터들 -->
+          <!-- 왼쪽: 연월 드롭다운 + 필터들 + 검색 -->
           <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
             <!-- 연도 + 월 드롭다운 (맨 왼쪽) -->
             <select id="hist-sel-year" onchange="histApply()"
@@ -582,9 +584,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
               <option value="10">10월</option><option value="11">11월</option><option value="12">12월</option>
             </select>
 
-            <input type="text" id="hsearch" placeholder="🔍 검색..." oninput="renderTable()"
-              style="background:var(--panel);border:1px solid var(--border2);border-radius:7px;padding:7px 11px;color:var(--text);font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;width:180px" />
-
             <select id="hcat" onchange="renderTable()"
               style="background:var(--panel);border:1px solid var(--border2);border-radius:7px;padding:7px 10px;color:var(--text);font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none">
               <option value="">전체 분류</option>
@@ -597,14 +596,18 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
               style="background:var(--panel);border:1px solid var(--border2);border-radius:7px;padding:7px 10px;color:var(--text);font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none">
               <option value="">전체 중요도</option><option>치명적</option><option>중대함</option><option>경미함</option>
             </select>
-            <select id="hst" onchange="renderTable()"
-              style="background:var(--panel);border:1px solid var(--border2);border-radius:7px;padding:7px 10px;color:var(--text);font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none">
-              <option value="">전체 결과</option><option>완료</option><option>처리중</option>
-            </select>
+            <!-- 검색 — 중요도 오른쪽 -->
+            <input type="text" id="hsearch" placeholder="🔍 검색..." oninput="renderTable()"
+              style="background:var(--panel);border:1px solid var(--border2);border-radius:7px;padding:7px 11px;color:var(--text);font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;width:180px" />
+            <!-- 전체 결과 필터 hidden (renderTable 호환용) -->
+            <select id="hst" style="display:none"><option value="">전체 결과</option><option>완료</option><option>처리중</option></select>
           </div>
 
-          <!-- 오른쪽: CSV + 설정 + 신규등록 -->
+          <!-- 오른쪽: 수정/삭제 + CSV + 설정 + 신규등록 -->
           <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
+            <button id="btn-row-edit" onclick="editSelectedRow()" disabled class="btn-csv" style="opacity:.4;cursor:not-allowed">✏️ 수정</button>
+            <button id="btn-row-del" onclick="deleteSelectedRow()" disabled class="btn-csv" style="opacity:.4;cursor:not-allowed">🗑 삭제</button>
+            <div style="width:1px;height:22px;background:var(--border);flex-shrink:0"></div>
             <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="loadCSV(this)" />
             <button class="btn-csv" onclick="document.getElementById('csvFileInput').click()">⬆ CSV</button>
             <button class="btn-csv" onclick="exportCSV()">⬇ CSV</button>
@@ -618,20 +621,19 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
               <col class="col-no"><col class="col-dt"><col class="col-line"><col class="col-eq"><col class="col-sn">
               <col class="col-cat"><col class="col-code"><col class="col-imp"><col class="col-sym"><col class="col-err">
               <col class="col-cause"><col class="col-action"><col class="col-st">
-              <col class="col-repair"><col class="col-parts"><col class="col-time"><col class="col-worker"><col class="col-photo"><col class="col-btn">
+              <col class="col-repair"><col class="col-parts"><col class="col-time"><col class="col-worker"><col class="col-photo">
             </colgroup>
             <thead><tr>
               <th>No.</th><th>날짜</th><th>라인</th><th>장비명</th><th>S/N</th>
               <th>분류</th><th>Code</th><th>중요도</th><th>발생 증상</th><th>Error</th>
               <th>원인/진단</th><th>조치 내용</th><th>결과</th>
-              <th>수리</th><th>Parts</th><th>시간</th><th>작업자</th><th>사진</th><th></th>
+              <th>수리</th><th>Parts</th><th>시간</th><th>작업자</th><th>사진</th>
             </tr></thead>
             <tbody id="histBody"></tbody>
           </table>
           <div id="histEmpty" class="empty-state" style="display:none"><div class="ei">📋</div><p>조건에 맞는 이력이 없습니다</p></div>
         </div>
       </div>
-
       <!-- 관리자 - 계정 관리 -->
       <div id="page-admin" style="display:none">
         <div class="pt">계정 관리</div>
@@ -693,12 +695,16 @@ async function loadAndRenderAdmin(){
 }
 /* ══ 이벤트 초기화 ══ */
 document.addEventListener('DOMContentLoaded', function(){
+  // 탭 버튼
+  var tabLogin  = document.getElementById('tab-login');
+  var tabSignup = document.getElementById('tab-signup');
+  if(tabLogin)  tabLogin.addEventListener('click',  function(){ switchAuthTab('login'); });
+  if(tabSignup) tabSignup.addEventListener('click', function(){ switchAuthTab('signup'); });
+
   var loginId = document.getElementById('loginId');
   var loginPw = document.getElementById('loginPw');
-  var btnLogin = document.querySelector('.btn-login');
   if(loginId) loginId.addEventListener('keydown', function(e){ if(e.key==='Enter') document.getElementById('loginPw').focus(); });
   if(loginPw) loginPw.addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
-  // 로그인/회원가입 버튼 — 탭에 따라 분기
   document.querySelectorAll('.btn-login').forEach(function(btn){
     btn.addEventListener('click', function(){
       var activeTab = document.getElementById('tab-login');
@@ -708,8 +714,8 @@ document.addEventListener('DOMContentLoaded', function(){
   });
   var suPw2 = document.getElementById('suPw2');
   if(suPw2) suPw2.addEventListener('keydown', function(e){ if(e.key==='Enter') doSignup(); });
-  var suPw = document.getElementById('suPw');
-  if(suPw) suPw.addEventListener('keydown', function(e){ if(e.key==='Enter') doSignup(); });
+  var btnLogout = document.getElementById('btn-logout');
+  if(btnLogout) btnLogout.addEventListener('click', doLogout);
 });
 
 /* ══ 데이터 ══ */
@@ -917,8 +923,8 @@ function showPage(name){
     const m=document.getElementById('menu-'+p);
     if(m) m.classList.toggle('active',p===name);
   });
-  const labels={'stat':'통계 데이터','hist':'이력 조회','admin':'계정 관리'};
-  const sections={'stat':'Trouble Sheet','hist':'Trouble Sheet','admin':'관리자'};
+  const labels={'stat':'장비문제 통계데이터','hist':'Trouble Sheet','admin':'계정 관리'};
+  const sections={'stat':'장비 Issue 관리','hist':'장비 Issue 관리','admin':'관리자'};
   document.getElementById('topbarPath').innerHTML=`${sections[name]||'Trouble Sheet'} &rsaquo; <span class="cur">${labels[name]||name}</span>`;
   if(name==='stat'){
     fbInit().then(()=>{ statInitSelects(); statApply(); });
@@ -1491,6 +1497,55 @@ function openPhotoViewer(url){
   document.body.appendChild(viewer);
 }
 
+/* ══ 행 선택 ══ */
+let selectedRowId = null;
+let selectedRowCanEdit = false;
+
+function selectRow(id, canEdit, event, detailId){
+  // 같은 행 다시 클릭 시 선택 해제
+  if(selectedRowId === id){
+    selectedRowId = null;
+    selectedRowCanEdit = false;
+    document.querySelectorAll('.main-row').forEach(r=>r.classList.remove('row-selected'));
+    updateRowButtons();
+    toggleDetail(detailId);
+    return;
+  }
+  // 이전 선택 해제
+  document.querySelectorAll('.main-row').forEach(r=>r.classList.remove('row-selected'));
+  selectedRowId = id;
+  selectedRowCanEdit = canEdit;
+  document.getElementById('row-'+id)?.classList.add('row-selected');
+  updateRowButtons();
+  toggleDetail(detailId);
+}
+
+function updateRowButtons(){
+  const editBtn = document.getElementById('btn-row-edit');
+  const delBtn  = document.getElementById('btn-row-del');
+  if(!editBtn||!delBtn) return;
+  const active = selectedRowId !== null && selectedRowCanEdit;
+  editBtn.disabled = !active;
+  delBtn.disabled  = !active;
+  editBtn.style.opacity = active ? '1' : '.4';
+  editBtn.style.cursor  = active ? 'pointer' : 'not-allowed';
+  delBtn.style.opacity  = active ? '1' : '.4';
+  delBtn.style.cursor   = active ? 'pointer' : 'not-allowed';
+}
+
+function editSelectedRow(){
+  if(!selectedRowId) return;
+  openEdit(selectedRowId);
+}
+
+function deleteSelectedRow(){
+  if(!selectedRowId) return;
+  deleteRecord(selectedRowId);
+  selectedRowId = null;
+  selectedRowCanEdit = false;
+  updateRowButtons();
+}
+
 /* ══ 이력 테이블 ══ */
 function populateFilters(){
   const sel=document.getElementById('hcat'); const cur=sel.value;
@@ -1523,10 +1578,12 @@ function renderTable(){
   tbody.innerHTML=rows.map((r,i)=>{
     const did=`d-${r.id}`;
     const partsStr = r.partsName ? `${r.partsName}${r.partsNo?'<br><span style="font-size:11px;color:var(--text3)">'+r.partsNo+'</span>':''}` : '—';
+    const dtShort = (r.dt||'').slice(5).replace('-','/');
+    const canEdit = currentUser?.role==='admin' || currentUser?.name===r.worker;
     return `
-    <tr class="main-row" onclick="toggleDetail('${did}')">
+    <tr class="main-row" id="row-${r.id}" onclick="selectRow(${r.id},${canEdit},event,'${did}')">
       <td class="td-no">${rows.length-i}</td>
-      <td class="td-dt">${r.dt||''}</td>
+      <td class="td-dt">${dtShort}</td>
       <td class="td-line">${r.line||'—'}</td>
       <td class="td-eq">${r.equipment||'—'}</td>
       <td class="td-sn">${r.serial||'—'}</td>
@@ -1541,24 +1598,18 @@ function renderTable(){
       <td style="vertical-align:middle"><span class="repair-tag repair-${r.repair||'자체'}">${r.repair||'자체'}</span></td>
       <td class="td-parts">${partsStr}</td>
       <td class="td-time">${r.actionTime?r.actionTime+'분':'—'}</td>
-      <td style="font-size:13px;white-space:nowrap;vertical-align:middle">${r.worker||''}</td>
-      <td style="vertical-align:middle;white-space:nowrap" onclick="event.stopPropagation()">
+      <td style="font-size:12px;white-space:nowrap;vertical-align:middle">${r.worker||''}</td>
+      <td style="vertical-align:middle;white-space:nowrap;text-align:center" onclick="event.stopPropagation()">
         ${(r.photoUrls||[]).length>0
-          ? `<div style="display:flex;gap:3px;align-items:center">
+          ? `<div style="display:flex;gap:3px;align-items:center;justify-content:center">
               <img src="${(r.photoUrls||[])[0]}" onclick="openPhotoViewer('${(r.photoUrls||[])[0]}')" style="width:36px;height:36px;object-fit:cover;border-radius:4px;border:1px solid var(--border2);cursor:zoom-in" />
               ${(r.photoUrls||[]).length>1?`<span style="font-size:11px;color:var(--text3);font-weight:600">+${(r.photoUrls||[]).length-1}</span>`:''}
             </div>`
           : '<span style="color:var(--border2);font-size:11px">—</span>'}
       </td>
-      <td style="white-space:nowrap;vertical-align:middle;text-align:center" onclick="event.stopPropagation()">
-        ${(currentUser?.role==='admin' || currentUser?.name===r.worker)
-          ? `<button class="btn-edit" onclick="openEdit(${r.id})">수정</button>
-             <button class="btn-del" onclick="deleteRecord(${r.id})">삭제</button>`
-          : ''}
-      </td>
     </tr>
     <tr id="${did}" class="detail-row" style="display:none">
-      <td colspan="19">
+      <td colspan="18">
         <div class="detail-box" style="padding:12px 16px">
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:start;margin-bottom:${(r.photoUrls||[]).length>0?'12px':'0'}">
             <div class="dc"><div class="dc-label">발생 증상 (전체)</div><div class="dc-val">${r.symptom||'—'}</div></div>
@@ -1648,7 +1699,7 @@ function buildForm(tid,data){
       </div>
     </div>
     <div class="fsec">
-      <div class="ftitle">트러블 분류</div>
+      <div class="ftitle">유형 분류</div>
       <div class="cat-grid">${catBtns}</div>
     </div>
     <div class="fsec">
@@ -1684,10 +1735,10 @@ function buildForm(tid,data){
           ondragleave="this.style.borderColor='var(--border2)';this.style.background='var(--bg)'"
           ondrop="onPhotoDrop(event)"
           onclick="document.getElementById('f-photos').click()"
-          style="border:2px dashed var(--border2);border-radius:10px;padding:20px;text-align:center;cursor:pointer;background:var(--bg);transition:all .2s">
-          <div style="font-size:28px;margin-bottom:6px">📷</div>
-          <div style="font-size:13px;color:var(--text2);font-weight:600">클릭하거나 사진을 여기로 드래그</div>
-          <div style="font-size:11px;color:var(--text3);margin-top:4px">최대 3장 · 자동 압축 적용</div>
+          style="border:2px dashed var(--border2);border-radius:8px;padding:12px;text-align:center;cursor:pointer;background:var(--bg);transition:all .2s">
+          <div style="font-size:22px;margin-bottom:4px">📷</div>
+          <div style="font-size:12px;color:var(--text2);font-weight:600">클릭하거나 사진을 여기로 드래그</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:2px">최대 3장 · 자동 압축 적용</div>
           <input type="file" id="f-photos" accept="image/*" multiple style="display:none" onchange="previewPhotos(this)" />
         </div>
         <div id="photo-preview" style="display:flex;flex-wrap:wrap;gap:8px">
